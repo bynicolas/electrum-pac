@@ -1,0 +1,22 @@
+# If you want PacGlobal Electrum to appear in a Linux app launcher ("start menu"), install this by doing:
+# sudo desktop-file-install electrum-pac.desktop
+
+[Desktop Entry]
+Comment=PacGlobal Electrum Wallet
+Exec=sh -c "PATH=\"\\$HOME/.local/bin:\\$PATH\"; electrum-pac %u"
+GenericName[en_US]=PacGlobal Electrum
+GenericName=PacGlobal Electrum
+Icon=electrum-pac
+Name[en_US]=PacGlobal Electrum
+Name=PacGlobal Electrum
+Categories=Network;
+StartupNotify=true
+StartupWMClass=dash-electrum
+Terminal=false
+Type=Application
+MimeType=x-scheme-handler/dashpay;
+Actions=Testnet;
+
+[Desktop Action Testnet]
+Exec=sh -c "PATH=\"\\$HOME/.local/bin:\\$PATH\"; electrum-pac --testnet %u"
+Name=Testnet mode

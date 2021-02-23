@@ -1,0 +1,12 @@
+{
+    "159.203.33.177": {
+        "pruning": "-",
+        "s": "50002",
+        "version": "1.4"
+    },
+    "pacglobal.electrum.lan": {
+        "pruning": "-",
+        "s": "50002",
+        "version": "1.4"
+    }
+}

@@ -1,0 +1,28 @@
+{
+    "BitcoinAverage": [
+        "USD",
+        "EUR",
+        "PLN"
+    ],
+    "Bittrex": [
+        "BTC",
+        "ETH"
+    ],
+    "Poloniex": [
+        "BTC"
+    ],
+    "CoinMarketCap": [
+        "BTC",
+        "USD"
+    ],
+    "CoinCap": [
+        "USD"
+    ],
+    "CoinGecko": [
+        "BTC",
+        "CAD",
+        "EUR",
+        "USD",
+        "PLN"
+    ]
+}
