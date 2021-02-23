@@ -44,26 +44,26 @@ jobs:
       - name: Set outputs for pkg_ver
         id: set_vars
         run: |
-          source ./contrib/pac/travis/electrum_pac/_version_env.sh
+          source ./contrib/dash/travis/electrum_dash_version_env.sh
           echo "::set-output name=pkg_ver::$(echo $DASH_ELECTRUM_VERSION)"
       - name: Prepare build
         env:
           DASH_ELECTRUM_VERSION: ${{ steps.set_vars.outputs.pkg_ver }}
         run: |
-          ./contrib/pac/actions/install-osx.sh
+          ./contrib/dash/actions/install-osx.sh
       - name: Build dmg
         env:
           DASH_ELECTRUM_VERSION: ${{ steps.set_vars.outputs.pkg_ver }}
         run: |
-          ./contrib/pac/actions/script-osx.sh
+          ./contrib/dash/actions/script-osx.sh
       - name: Upload Release Asset
         uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ needs.create_release.outputs.upload_url }}
-          asset_path: dist/Pac-Electrum-${{ steps.set_vars.outputs.pkg_ver }}-macosx.dmg
-          asset_name: Pac-Electrum-${{ steps.set_vars.outputs.pkg_ver }}-macosx.dmg
+          asset_path: dist/Dash-Electrum-${{ steps.set_vars.outputs.pkg_ver }}-macosx.dmg
+          asset_name: Dash-Electrum-${{ steps.set_vars.outputs.pkg_ver }}-macosx.dmg
           asset_content_type: application/apple-diskimage
 
   build_apk:
@@ -72,8 +72,8 @@ jobs:
     strategy:
       matrix:
         arch: ['armeabi-v7a', 'arm64-v8a']
-        is_mainnet: [['true', 'electrum_pac/'],
-                     ['false', 'electrum_pac/_Testnet']]
+        is_mainnet: [['true', 'Electrum_DASH'],
+                     ['false', 'Electrum_DASH_Testnet']]
     env:
       APP_ANDROID_ARCH: ${{ matrix.arch }}
       ELECTRUM_MAINNET: ${{ matrix.is_mainnet[0] }}
@@ -84,7 +84,7 @@ jobs:
       - name: Set outputs for pkg_ver, apk_ver, vercode, is_release
         id: set_vars
         run: |
-          source ./contrib/pac/travis/electrum_pac/_version_env.sh
+          source ./contrib/dash/travis/electrum_dash_version_env.sh
           echo "::set-output name=pkg_ver::$(echo $DASH_ELECTRUM_VERSION)"
           echo "::set-output name=apk_ver::$(echo $DASH_ELECTRUM_APK_VERSION)"
           echo "::set-output name=vercode::$(echo $DASH_ELECTRUM_VERSION_CODE)"
@@ -97,7 +97,7 @@ jobs:
           DASH_ELECTRUM_VERSION_CODE: ${{ steps.set_vars.outputs.vercode }}
           IS_RELEASE: ${{ steps.set_vars.outputs.is_release }}
         run: |
-          ./contrib/pac/actions/install-linux-apk.sh
+          ./contrib/dash/actions/install-linux-apk.sh
       - name: Build apk
         if: ${{ steps.set_vars.outputs.is_release || matrix.is_mainnet[0] == 'false' }}
         env:
@@ -106,7 +106,7 @@ jobs:
           DASH_ELECTRUM_VERSION_CODE: ${{ steps.set_vars.outputs.vercode }}
           IS_RELEASE: ${{ steps.set_vars.outputs.is_release }}
         run: |
-          ./contrib/pac/actions/script-linux-apk.sh
+          ./contrib/dash/actions/script-linux-apk.sh
       - name: Upload Release Asset
         if: ${{ steps.set_vars.outputs.is_release || matrix.is_mainnet[0] == 'false' }}
         uses: actions/upload-release-asset@v1
@@ -128,26 +128,26 @@ jobs:
       - name: Set outputs for pkg_ver
         id: set_vars
         run: |
-          source ./contrib/pac/travis/electrum_pac/_version_env.sh
+          source ./contrib/dash/travis/electrum_dash_version_env.sh
           echo "::set-output name=pkg_ver::$(echo $DASH_ELECTRUM_VERSION)"
       - name: Prepare build
         env:
           DASH_ELECTRUM_VERSION: ${{ steps.set_vars.outputs.pkg_ver }}
         run: |
-          ./contrib/pac/actions/install-linux.sh
+          ./contrib/dash/actions/install-linux.sh
       - name: Build Linux/Win
         env:
           DASH_ELECTRUM_VERSION: ${{ steps.set_vars.outputs.pkg_ver }}
         run: |
-          ./contrib/pac/actions/script-linux.sh
+          ./contrib/dash/actions/script-linux.sh
       - name: Upload sdist tar.gz Release Asset
         uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ needs.create_release.outputs.upload_url }}
-          asset_path: dist/Pac-Electrum-${{ steps.set_vars.outputs.pkg_ver }}.tar.gz
-          asset_name: Pac-Electrum-${{ steps.set_vars.outputs.pkg_ver }}.tar.gz
+          asset_path: dist/Dash-Electrum-${{ steps.set_vars.outputs.pkg_ver }}.tar.gz
+          asset_name: Dash-Electrum-${{ steps.set_vars.outputs.pkg_ver }}.tar.gz
           asset_content_type: application/gzip
       - name: Upload sdist zip Release Asset
         uses: actions/upload-release-asset@v1
@@ -155,8 +155,8 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ needs.create_release.outputs.upload_url }}
-          asset_path: dist/Pac-Electrum-${{ steps.set_vars.outputs.pkg_ver }}.zip
-          asset_name: Pac-Electrum-${{ steps.set_vars.outputs.pkg_ver }}.zip
+          asset_path: dist/Dash-Electrum-${{ steps.set_vars.outputs.pkg_ver }}.zip
+          asset_name: Dash-Electrum-${{ steps.set_vars.outputs.pkg_ver }}.zip
           asset_content_type: application/x-zip-compressed
       - name: Upload AppImage Release Asset
         uses: actions/upload-release-asset@v1
@@ -164,8 +164,8 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ needs.create_release.outputs.upload_url }}
-          asset_path: dist/Pac-Electrum-${{ steps.set_vars.outputs.pkg_ver }}-x86_64.AppImage
-          asset_name: Pac-Electrum-${{ steps.set_vars.outputs.pkg_ver }}-x86_64.AppImage
+          asset_path: dist/Dash-Electrum-${{ steps.set_vars.outputs.pkg_ver }}-x86_64.AppImage
+          asset_name: Dash-Electrum-${{ steps.set_vars.outputs.pkg_ver }}-x86_64.AppImage
           asset_content_type: application/octet-stream
       - name: Upload Win32 Release Asset
         uses: actions/upload-release-asset@v1
@@ -173,8 +173,8 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ needs.create_release.outputs.upload_url }}
-          asset_path: dist/Pac-Electrum-${{ steps.set_vars.outputs.pkg_ver }}-setup-win32.exe
-          asset_name: Pac-Electrum-${{ steps.set_vars.outputs.pkg_ver }}-setup-win32.exe
+          asset_path: dist/Dash-Electrum-${{ steps.set_vars.outputs.pkg_ver }}-setup-win32.exe
+          asset_name: Dash-Electrum-${{ steps.set_vars.outputs.pkg_ver }}-setup-win32.exe
           asset_content_type: application/vnd.microsoft.portable-executable
       - name: Upload Win64 Release Asset
         uses: actions/upload-release-asset@v1
@@ -182,8 +182,8 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ needs.create_release.outputs.upload_url }}
-          asset_path: dist/Pac-Electrum-${{ steps.set_vars.outputs.pkg_ver }}-setup-win64.exe
-          asset_name: Pac-Electrum-${{ steps.set_vars.outputs.pkg_ver }}-setup-win64.exe
+          asset_path: dist/Dash-Electrum-${{ steps.set_vars.outputs.pkg_ver }}-setup-win64.exe
+          asset_name: Dash-Electrum-${{ steps.set_vars.outputs.pkg_ver }}-setup-win64.exe
           asset_content_type: application/vnd.microsoft.portable-executable
 
   upload_notify_artifact:
