@@ -19,21 +19,21 @@ except ImportError as e:
     sys.exit(1)
 
 try:
-    imp.load_module('electrum_dash', *imp.find_module('../electrum_dash'))
-    from electrum_dash import constants, keystore, storage, SimpleConfig
-    from electrum_dash.version import ELECTRUM_VERSION
-    from electrum_dash.gui.qt import update_checker
-    from electrum_dash.plugin import Plugins
-    from electrum_dash.storage import WalletStorage
-    from electrum_dash.util import InvalidPassword
-    from electrum_dash.wallet import Wallet
-    from electrum_dash.wallet_db import WalletDB
+    imp.load_module('electrum_pac', *imp.find_module('../electrum_pac'))
+    from electrum_pac import constants, keystore, storage, SimpleConfig
+    from electrum_pac.version import ELECTRUM_VERSION
+    from electrum_pac.gui.qt import update_checker
+    from electrum_pac.plugin import Plugins
+    from electrum_pac.storage import WalletStorage
+    from electrum_pac.util import InvalidPassword
+    from electrum_pac.wallet import Wallet
+    from electrum_pac.wallet_db import WalletDB
 except ImportError as e:
     print('Import error:', e)
 
 
 HOME_DIR = os.path.expanduser('~')
-CONFIG_NAME = '.update-last-version-dash-electrum'
+CONFIG_NAME = '.update-last-version-pac-electrum'
 SIGNING_KEYS = update_checker.UpdateCheck.VERSION_ANNOUNCEMENT_SIGNING_KEYS
 LATEST_VER_FNAME = '.latest-version'
 COMMIT_MSG_TEMPLATE = 'set {fname} to {version}'

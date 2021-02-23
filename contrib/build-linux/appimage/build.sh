@@ -7,7 +7,7 @@ CONTRIB="$PROJECT_ROOT/contrib"
 CONTRIB_APPIMAGE="$CONTRIB/build-linux/appimage"
 DISTDIR="$PROJECT_ROOT/dist"
 BUILDDIR="/var/build/appimage"
-APPDIR="$BUILDDIR/electrum-dash.AppDir"
+APPDIR="$BUILDDIR/electrum-pac.AppDir"
 CACHEDIR="$BUILDDIR/.cache/appimage"
 
 # pinned versions
@@ -17,10 +17,10 @@ SQUASHFSKIT_COMMIT="ae0d656efa2d0df2fcac795b6823b44462f19386"
 export GCC_STRIP_BINARIES="1"
 
 pushd $PROJECT_ROOT
-source $CONTRIB/dash/travis/electrum_dash_version_env.sh
+source $CONTRIB/pac/travis/electrum_pac/_version_env.sh
 popd
 VERSION=$DASH_ELECTRUM_VERSION
-APPIMAGE="$DISTDIR/Dash-Electrum-$VERSION-x86_64.AppImage"
+APPIMAGE="$DISTDIR/Pac-Electrum-$VERSION-x86_64.AppImage"
 
 . "$CONTRIB"/build_tools_util.sh
 
@@ -95,8 +95,8 @@ cp "/usr/lib/x86_64-linux-gnu/libzbar.so.0" "$APPDIR/usr/lib/libzbar.so.0"
 
 
 info "desktop integration."
-cp "$PROJECT_ROOT/electrum-dash.desktop" "$APPDIR/electrum-dash.desktop"
-cp "$PROJECT_ROOT/electrum_dash/gui/icons/electrum-dash.png" "$APPDIR/electrum-dash.png"
+cp "$PROJECT_ROOT/electrum-pac.desktop" "$APPDIR/electrum-pac.desktop"
+cp "$PROJECT_ROOT/electrum_pac/gui/icons/electrum-pac.png" "$APPDIR/electrum-pac.png"
 
 
 # add launcher

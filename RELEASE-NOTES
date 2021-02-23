@@ -237,7 +237,7 @@
  * Importing/sweeping WIF keys: stricter checks (#4638, #5290)
  * Electrum protocol: the client's "user agent" has been changed from
    "3.3.5" to "dash-electrum/3.3.5". Other libraries connecting to servers
-   can consider not "spoofing" to be Dash Electrum. (#5246)
+   can consider not "spoofing" to be PacGlobal Electrum. (#5246)
  * Several other minor bugfixes and usability improvements.
 
 
@@ -352,7 +352,7 @@
    warning in this case. (#4566)
  * Revealer: the PRNG used has been changed (#4649)
  * fix Linux distributables: 'typing' was not bundled, needed for python 3.4
- * fix #4491: on Android, if user had set "uDASH" as base unit, app crashed
+ * fix #4491: on Android, if user had set "uPAC" as base unit, app crashed
  * fix #4497: on Android, paying bip70 invoices from cold start did not work
  * Several other minor bugfixes and usability improvements.
 

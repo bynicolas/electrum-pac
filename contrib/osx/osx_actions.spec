@@ -16,7 +16,7 @@ else:
 PY36BINDIR = os.environ.get('PY36BINDIR')
 GITHUB_REF = os.environ.get('GITHUB_REF')
 DASH_ELECTRUM_VERSION = os.environ.get('DASH_ELECTRUM_VERSION')
-ICONS_FILE = 'electrum_dash/gui/icons/electrum-dash.icns'
+ICONS_FILE = 'electrum_pac/gui/icons/electrum-pac.icns'
 
 hiddenimports = []
 hiddenimports += collect_submodules('pkg_resources')  # workaround for https://github.com/pypa/setuptools/issues/1963
@@ -31,40 +31,40 @@ hiddenimports += collect_submodules('websocket')
 hiddenimports.remove('safetlib.qt.pinmatrix')
 
 hiddenimports += [
-    'electrum_dash',
-    'electrum_dash.base_crash_reporter',
-    'electrum_dash.base_wizard',
-    'electrum_dash.plot',
-    'electrum_dash.qrscanner',
-    'electrum_dash.websockets',
-    'electrum_dash.gui.qt',
+    'electrum_pac',
+    'electrum_pac.base_crash_reporter',
+    'electrum_pac.base_wizard',
+    'electrum_pac.plot',
+    'electrum_pac.qrscanner',
+    'electrum_pac.websockets',
+    'electrum_pac.gui.qt',
     'PyQt5.sip',
     'PyQt5.QtPrintSupport',  # needed by Revealer
 
-    'electrum_dash.plugins',
+    'electrum_pac.plugins',
 
-    'electrum_dash.plugins.hw_wallet.qt',
+    'electrum_pac.plugins.hw_wallet.qt',
 
-    'electrum_dash.plugins.audio_modem.qt',
-    'electrum_dash.plugins.cosigner_pool.qt',
-    'electrum_dash.plugins.digitalbitbox.qt',
-    'electrum_dash.plugins.email_requests.qt',
-    'electrum_dash.plugins.keepkey.qt',
-    'electrum_dash.plugins.revealer.qt',
-    'electrum_dash.plugins.labels.qt',
-    'electrum_dash.plugins.trezor.qt',
-    'electrum_dash.plugins.safe_t.client',
-    'electrum_dash.plugins.safe_t.qt',
-    'electrum_dash.plugins.ledger.qt',
-    'electrum_dash.plugins.virtualkeyboard.qt',
+    'electrum_pac.plugins.audio_modem.qt',
+    'electrum_pac.plugins.cosigner_pool.qt',
+    'electrum_pac.plugins.digitalbitbox.qt',
+    'electrum_pac.plugins.email_requests.qt',
+    'electrum_pac.plugins.keepkey.qt',
+    'electrum_pac.plugins.revealer.qt',
+    'electrum_pac.plugins.labels.qt',
+    'electrum_pac.plugins.trezor.qt',
+    'electrum_pac.plugins.safe_t.client',
+    'electrum_pac.plugins.safe_t.qt',
+    'electrum_pac.plugins.ledger.qt',
+    'electrum_pac.plugins.virtualkeyboard.qt',
 ]
 
 datas = [
-    ('electrum_dash/checkpoints*.*', 'electrum_dash'),
-    ('electrum_dash/*.json', 'electrum_dash'),
-    ('electrum_dash/locale', 'electrum_dash/locale'),
-    ('electrum_dash/wordlist', 'electrum_dash/wordlist'),
-    ('electrum_dash/gui/icons', 'electrum_dash/gui/icons'),
+    ('electrum_pac/checkpoints*.*', 'electrum_pac'),
+    ('electrum_pac/*.json', 'electrum_pac'),
+    ('electrum_pac/locale', 'electrum_pac/locale'),
+    ('electrum_pac/wordlist', 'electrum_pac/wordlist'),
+    ('electrum_pac/gui/icons', 'electrum_pac/gui/icons'),
 ]
 
 datas += collect_data_files('trezorlib')
@@ -130,7 +130,7 @@ excludes += [
     'PyQt5.QtWinExtras',
 ]
 
-a = Analysis(['electrum-dash'],
+a = Analysis(['electrum-pac'],
              hiddenimports=hiddenimports,
              datas=datas,
              binaries=binaries,
@@ -161,15 +161,15 @@ exe = EXE(pyz,
           strip=False,
           upx=False,
           console=False,
-          icon='electrum_dash/gui/icons/electrum-dash.ico',
-          name=os.path.join('electrum-dash', cmdline_name))
+          icon='electrum_pac/gui/icons/electrum-pac.ico',
+          name=os.path.join('electrum-pac', cmdline_name))
 
 coll = COLLECT(exe,
                a.binaries,
                a.datas,
                strip=False,
                upx=False,
-               name=os.path.join('dist', 'electrum-dash'))
+               name=os.path.join('dist', 'electrum-pac'))
 
 app = BUNDLE(coll,
              info_plist={
@@ -179,7 +179,7 @@ app = BUNDLE(coll,
                     {'CFBundleURLName': 'dash', 'CFBundleURLSchemes': ['dash']}
                 ],
              },
-             name=os.path.join('dist', 'Dash Electrum.app'),
-             appname="Dash Electrum",
+             name=os.path.join('dist', 'PacGlobal Electrum.app'),
+             appname="PacGlobal Electrum",
 	         icon=ICONS_FILE,
              version=DASH_ELECTRUM_VERSION)

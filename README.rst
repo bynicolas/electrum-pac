@@ -1,4 +1,4 @@
-Dash Electrum - Lightweight Dashpay client
+PacGlobal Electrum - Lightweight PacGlobal client
 =====================================
 
 ::
@@ -9,8 +9,8 @@ Dash Electrum - Lightweight Dashpay client
   Homepage: https://electrum.dash.org/
 
 
-.. image:: https://travis-ci.org/akhavr/electrum-dash.svg?branch=master
-    :target: https://travis-ci.org/akhavr/electrum-dash
+.. image:: https://travis-ci.org/akhavr/electrum-pac.svg?branch=master
+    :target: https://travis-ci.org/akhavr/electrum-pac
     :alt: Build Status
 
 
@@ -21,26 +21,16 @@ Getting started
 ===============
 
 
-Use PPA setup
--------------
-
-On Ubuntu/Linux Mint you can try to install Dash Electrum with next commands::
-
-    sudo add-apt-repository ppa:akhavr/dash-electrum
-    sudo apt-get update
-    sudo apt-get install dash-electrum
-
-
 Use source distribution
 -----------------------
 
-Dash Electrum is a pure python application. If you want to use the
+PacGlobal Electrum is a pure python application. If you want to use the
 Qt interface, install the Qt dependencies::
 
     sudo apt-get install python3-pyqt5
 
 If you downloaded the official package (tar.gz), you can run
-Dash Electrum from its root directory without installing it on your
+PacGlobal Electrum from its root directory without installing it on your
 system; all the python dependencies are included in the 'packages'
 directory (except x11-hash).
 
@@ -56,29 +46,29 @@ To install precise tested version of pyqt5 run once::
 
     python3 -m pip install -t packages -r contrib/deterministic-build/requirements-binaries.txt
 
-To run Dash Electrum from its root directory, just do::
+To run PacGlobal Electrum from its root directory, just do::
 
-    ./electrum-dash
+    ./electrum-pac
 
-You can also install Dash Electrum on your system, by running this command::
+You can also install PacGlobal Electrum on your system, by running this command::
 
     sudo apt-get install python3-setuptools
     python3 -m pip install .[fast]
 
 This will download and install the Python dependencies used by
-Dash Electrum instead of using the 'packages' directory.
+PacGlobal Electrum instead of using the 'packages' directory.
 The 'fast' extra contains some optional dependencies that we think
 are often useful but they are not strictly needed.
 
 If you cloned the git repository, you need to compile extra files
-before you can run Dash Electrum. Read the next section, "Development
+before you can run PacGlobal Electrum. Read the next section, "Development
 Version".
 
 
 Using Tor proxy
 ===============
 
-Starting from Dash Electrum release 3.2.3.1 automatic Tor Proxy
+Starting from PacGlobal Electrum release 3.2.3.1 automatic Tor Proxy
 detection and use on wallet startup is added to
 `Network <docs/tor/tor-proxy-on-startup.md>`_ preferences.
 
@@ -94,8 +84,8 @@ Development version
 
 Check out the code from GitHub::
 
-    git clone https://github.com/akhavr/electrum-dash.git
-    cd electrum-dash
+    git clone https://github.com/bynicolas/electrum-pac.git
+    cd electrum-pac
 
 Run install (this should install dependencies)::
 
@@ -105,7 +95,7 @@ Run install (this should install dependencies)::
 Compile the protobuf description file::
 
     sudo apt-get install protobuf-compiler
-    protoc --proto_path=electrum_dash --python_out=electrum_dash electrum_dash/paymentrequest.proto
+    protoc --proto_path=electrum_pac/ --python_out=electrum_pac/ electrum_pac/paymentrequest.proto
 
 Create translations (optional)::
 

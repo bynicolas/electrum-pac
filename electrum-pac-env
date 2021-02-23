@@ -36,4 +36,4 @@ export PYTHONPATH="$PYTHONPATH:"\
 "${HOME}/.local/lib/python${PYTHON_VER}/site-packages"
 
 
-./electrum-dash "$@"
+./electrum-pac "$@"

@@ -1,7 +1,7 @@
-Index: electrum-dash-post-3.2.2/electrum-dash
+Index: electrum-pac-post-3.2.2/electrum-pac
 ===================================================================
---- electrum-dash-post-3.2.2.orig/electrum-dash
-+++ electrum-dash-post-3.2.2/electrum-dash
+--- electrum-pac-post-3.2.2.orig/electrum-pac
++++ electrum-pac-post-3.2.2/electrum-pac
 @@ -27,6 +27,8 @@ import sys
  import sys
  

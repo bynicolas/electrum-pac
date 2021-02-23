@@ -1,4 +1,4 @@
-# Specific of using Dash Electrum on various operating systems
+# Specific of using PacGlobal Electrum on various operating systems
 
 ## macOS
 
